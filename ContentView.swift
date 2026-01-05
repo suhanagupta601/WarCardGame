@@ -1,13 +1,16 @@
-//
-//  ContentView.swift
-//  WarCardGame
-//
-//  Created by Suhana Gupta on 12/31/25.
-//
 
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var playerCard = "card7" // @State = property wrapper that changes the behavior/changes the visual state
+    @State var cpuCard = "card13"
+    
+    @State var playerScore = 0
+    @State var cpuScore = 0
+    
+    
+    
     var body: some View {
         
         ZStack {
@@ -22,23 +25,26 @@ struct ContentView: View {
                     
                 HStack {
                     Spacer()
-                    Image("card2")
+                    Image(playerCard)
                     Spacer()
-                    Image("card3")
+                    Image(cpuCard)
                     Spacer()
                 }
                 .padding(35)
 
-                
-                Image("button")
-                
-                
+                Button {
+                    deal()
+                } label: {
+                    Image("button")
+                }
+
+
                 
                 HStack{
                     Spacer()
                     VStack {
                         Text("Player")
-                        Text("0")
+                        Text(String(playerScore))
                             .font(.largeTitle)
                             .padding(5)
 
@@ -46,7 +52,7 @@ struct ContentView: View {
                     Spacer()
                     VStack {
                         Text("CPU")
-                        Text("0")
+                        Text(String(cpuScore))
                             .font(.largeTitle)
                             .padding(5)
 
@@ -63,7 +69,36 @@ struct ContentView: View {
         
         
     }
+    
+    // DEAL FUNCTION
+    func deal() {
+        //print("Deal Cards")
+        // randomize player card
+        let playerCardVal = String(Int.random(in: 2...14))
+        playerCard = "card" + playerCardVal
+        
+        // randomize cpu card
+        let cpuCardVal = String(Int.random(in: 2...14))
+        cpuCard = "card" + cpuCardVal
+        
+        // update score
+        if (playerCardVal > cpuCardVal) {
+            playerScore += 1
+        }
+        
+        else if (playerCardVal < cpuCardVal) {
+            cpuScore += 1
+        }
+        
+        else {
+            print("Tie! No points.")
+        }
+    }
+    
+    
+    
 }
+
 
 #Preview {
     ContentView()
