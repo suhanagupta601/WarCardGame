@@ -18,3 +18,4 @@ The player and CPU each draw a random card, and the higher card wins the round.
 5. CPU wins, then CPU score increases
 5. Tie, then no points awarded
 6. Scores update instantly on screen
+<img width="263" height="531" alt="Screenshot 2026-01-05 at 4 42 03 PM" src="https://github.com/user-attachments/assets/d303ac82-797b-4ba1-b2ba-666e65000f8f" />
